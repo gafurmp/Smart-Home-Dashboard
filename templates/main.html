@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<title>Smart Home Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta http-equiv="Refresh" content="30">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-light-grey w3-card" id="myNavbar">
+    <a href="http://192.168.178.24:5001" class="w3-bar-item w3-button w3-wide">HOME</a>
+    <a href="#dashboard" class="w3-bar-item w3-button w3-wide">DASHBOARD</a>
+  </div>
+</div>
+
+
+<!-- Header -->
+<header class="w3-container w3-center w3-dark-grey" style="padding:64px 16px">
+  <h1 class="w3-xxlarge w3-text-yellow"><span class="w3-padding w3-green w3-opacity-min"><b>SMART HOME</b></span> <span class="w3-hide-small w3-text-yellow">DASHBOARD</span></h1>
+</header>
+
+<!-- Page content -->
+<div class="w3-content w3-padding w3-dark-grey" style="max-width:1564px">
+
+<!-- Dashboard Section -->
+<div class="w3-container w3-green w3-text-yellow" style="padding:64px 16px" id="dashboard">
+  <h1 class="w3-center">MY SMART HOME DASHBOARD</h1>
+  <p class="w3-center w3-large">~~smart home solutions~~</p>
+  <div class="w3-row-padding w3-left" style="margin-top:64px">
+    <div class="w3-half">
+      <i class="fa fa-lightbulb-o w3-margin-bottom w3-jumbo w3-center"></i>
+      <h2 class="w3-large">Smart Bulbs</h2>
+      {% for device in devices %}
+      <p class="w3-cell-row w3-left">The lamp "{{ devices[device].name }}"
+      {% if devices[device].power == true %}
+      is currently ON <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/off"><input type="submit" value="Turn OFF" /></form>
+      {% else %}
+      is currently OFF <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/on"><input type="submit" value="Turn ON" /></form>
+      {% endif %}
+      </p>
+      {% endfor %}
+
+      {% if message %}
+      <h3 class="w3-cell-row w3-left w3-large w3-text-red">{{ message }}</h3>
+      {% endif %}
+    </div>
+    <div class="w3-half">
+      <i class="fa fa-microchip w3-margin-bottom w3-jumbo"></i>
+      <h2 class="w3-large">Sensor Hub</h2>
+      {% for sensor in sensorhub %}
+      <p class="w3-cell-row w3-left">{{ sensorhub[sensor].name }}: {{sensorhub[sensor].value}} {{sensorhub[sensor].unit}}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-dark-grey w3-padding-32">
+  <a href="#dashboard" class="w3-button w3-green"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <p>Developed by <a href="https://abdulgmp.de" title="ABDUL GAFOOR MP" target="_blank" class="w3-hover-text-green">Abdul Gafoor MP</a></p>
+</footer>
+
+</body>
+</html>
+
