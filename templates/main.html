@@ -9,25 +9,25 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
 
 body, html {
-  height: 100%;
-  line-height: 1.8;
+  height: 100vh;
+  line-height: 1.5;
 }
 
 /* Full height image header */
-.bgimg-1 {
+.bgimg {
   background-position: center;
   background-size: cover;
   background-image: url({{ url_for('static', filename='img/sh0.jpg') }});
-  min-height: 30%;
+  min-height: 10%;
 }
 
 .cover{
-    min-height: 100%;
-    background: url({{ url_for('static', filename='img/sh3.jpg') }}) repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;   
+  min-height: 150%;
+  background: url({{ url_for('static', filename='img/sh12.jpg') }}) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .w3-bar .w3-button {
@@ -46,50 +46,50 @@ body, html {
 
 
 <!-- Header with full height image-->
-<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
-  <div class="w3-display-center w3-xxlarge w3-text-white" style="padding:128px">
-    <span class="w3-padding w3-green w3-opacity-min w3-center w3-xxlarge"><b>SMART HOME</b></span> <span class="w3-hide-small w3-text-yellow w3-center w3-xxlarge">DASHBOARD</span><br>
-    <p><a href="#dashboard" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-center w3-opacity w3-hover-opacity-off">Take me to dashboard</a></p>
+<header class="bgimg w3-grayscale-min" id="home">
+  <div class="w3-display-center w3-xxlarge w3-text-white" style="padding:64px">
+    <span class="w3-padding w3-green w3-opacity-min w3-center w3-xxlarge" style=""><b><i>SMART HOME</i></b></span> <span class="w3-hide-small w3-text-yellow w3-center w3-xxlarge">DASHBOARD</span><br>
+    <p><a href="#dashboard" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-center w3-opacity w3-hover-opacity-off">DASHBOARD</a></p>
   </div>
 </header>
 
 <!-- Dashboard Section -->
-<div class="cover w3-green w3-text-yellow" style="padding:64px 16px" id="dashboard">
-  <div class="w3-row-padding w3-left" style="margin-top:64px" id="dashboard">
+<div class="cover w3-grayscale-min w3-green w3-text-yellow" style="padding:16px 16px" id="dashboard">
+  <div class="w3-row-padding w3-left" id="dashboard">
     <div class="w3-half">
       <i class="fa fa-lightbulb-o w3-margin-bottom w3-jumbo w3-center"></i>
-      <h2 class="w3-large">Smart Bulbs</h2>
+      <h2 class="w3-xxlarge"><b>Smart Bulbs</b></h2>
       {% for device in devices %}
-      <p class="w3-cell-row w3-left">The lamp "{{ devices[device].name }}"
+      <p class="w3-cell-row w3-large w3-left w3-text-black"><b>The lamp "{{ devices[device].name }}"
       {% if devices[device].power == true %}
-        is currently <b>ON</b><br />
+        is currently ON</b><br />
       <br />
-      <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/off"><input type="submit" value="Turn OFF" /></form>
+      <form class="w3-cell-row w3-large w3-left" action="http://192.168.178.24:5001/{{device}}/off"><input type="submit" value="Turn OFF" /></form>
       {% else %}
-      is currently <b>OFF</b><br />
+      is currently OFF</b><br />
       <br />
-      <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/on"><input type="submit" value="Turn ON" /></form>
+      <form class="w3-cell-row w3-large w3-left" action="http://192.168.178.24:5001/{{device}}/on"><input type="submit" value="Turn ON" /></form>
       {% endif %}
       </p>
       {% endfor %}
 
       {% if message %}
-      <h3 class="w3-cell-row w3-left w3-large w3-text-red">{{ message }}</h3>
+      <h3 class="w3-cell-row w3-left w3-large w3-text-red"><b><i>{{ message }}</i></b></h3>
       {% endif %}
     </div>
     <div class="w3-half">
       <i class="fa fa-microchip w3-margin-bottom w3-jumbo"></i>
-      <h2 class="w3-large">Sensor Hub</h2>
+      <h2 class="w3-xxlarge"><b>Sensor Hub</b></h2>
       {% for sensor in sensorhub %}
-      <p class="w3-cell-row w3-left">{{ sensorhub[sensor].name }}: {{sensorhub[sensor].value}} {{sensorhub[sensor].unit}}</p>
+      <p class="w3-cell-row w3-large w3-left w3-text-black"><b>{{ sensorhub[sensor].name }}: {{sensorhub[sensor].value}} {{sensorhub[sensor].unit}}</b></p>
       {% endfor %}
     </div>
   </div>
 </div>
 
 <!-- Footer -->
-<footer class="w3-center w3-dark-grey w3-padding-64">
-  <a href="#home" class="w3-button w3-green"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+<footer class="bgimg w3-grayscale-min w3-center  w3-padding-64">
+  <a href="#home" class="w3-button w3-center w3-green">HOME</a>
   <p>Developed by <a href="https://abdulgmp.de" title="ABDUL GAFOOR MP" target="_blank" class="w3-hover-text-green">Abdul Gafoor MP</a></p>
 </footer>
 
