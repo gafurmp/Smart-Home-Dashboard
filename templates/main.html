@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta http-equiv="Refresh" content="30">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, sans-serif}
@@ -64,9 +62,13 @@ body, html {
       {% for device in devices %}
       <p class="w3-cell-row w3-left">The lamp "{{ devices[device].name }}"
       {% if devices[device].power == true %}
-      is currently ON <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/off"><input type="submit" value="Turn OFF" /></form>
+        is currently <b>ON</b><br />
+      <br />
+      <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/off"><input type="submit" value="Turn OFF" /></form>
       {% else %}
-      is currently OFF <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/on"><input type="submit" value="Turn ON" /></form>
+      is currently <b>OFF</b><br />
+      <br />
+      <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/on"><input type="submit" value="Turn ON" /></form>
       {% endif %}
       </p>
       {% endfor %}
