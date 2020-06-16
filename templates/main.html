@@ -47,9 +47,13 @@ body, html {
       {% for device in devices %}
       <p class="w3-cell-row w3-left">The lamp "{{ devices[device].name }}"
       {% if devices[device].power == true %}
-      is currently ON <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/off"><input type="submit" value="Turn OFF" /></form>
+        is currently <b>ON</b><br />
+      <br />
+      <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/off"><input type="submit" value="Turn OFF" /></form>
       {% else %}
-      is currently OFF <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/on"><input type="submit" value="Turn ON" /></form>
+      is currently <b>OFF</b><br />
+      <br />
+      <form class="w3-cell-row w3-left" action="http://192.168.178.24:5001/{{device}}/on"><input type="submit" value="Turn ON" /></form>
       {% endif %}
       </p>
       {% endfor %}
