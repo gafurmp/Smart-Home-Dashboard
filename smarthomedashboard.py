@@ -29,7 +29,7 @@ for i in range(len(ip2idx)):
  bulbs.append(SmartBulb(host_ip))
 
 #~~~~~~~~~~~~flask~~~~~~~~~~~~~
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def main():
    # For each device, read the device state and store it in the devices dictionary
    for device in devices:
